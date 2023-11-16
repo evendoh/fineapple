@@ -1,2 +1,5 @@
-# fineapple
+🍎🍏🍎🍏🍎🍏🍎🍏🍎🍏🍎🍏🍎🍏
+# fineapple 🍎
 fine financial application
+
+🍎🍏🍎🍏🍎🍏🍎🍏🍎🍏🍎🍏🍎🍏
