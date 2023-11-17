@@ -1,0 +1,2 @@
+예적금 API_KEY='d8ac7b184792adf08a6f6bb6bd619d37'
+환율 api_key = 'TRLP98UbzQOqhFAAdzuA6gqLSfHOwrHF'
