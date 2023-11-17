@@ -4,12 +4,14 @@ from rest_framework.permissions import IsAuthenticated
 from .models import User
 from .serializers import UserProfileSerializer
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def user_profile_detail(request):
-    user = request.user
-    serializer = UserProfileSerializer(user)
-    return Response(serializer.data)
+
+# # profile 조회
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def user_profile_detail(request):
+#     user = request.user
+#     serializer = UserProfileSerializer(user)
+#     return Response(serializer.data)
 
 
 

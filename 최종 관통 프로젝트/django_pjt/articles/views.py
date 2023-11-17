@@ -23,14 +23,21 @@ def like_post(request, article_pk):
         return Response({"message": "Article liked successfully"}, status=status.HTTP_201_CREATED)
     
 ## 댓글 작성 및 조회
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST', 'DELETE'])
 @permission_classes([IsAuthenticatedOrReadOnly])
-def commet_list(request, article_pk):
+def comment_list(request, article_pk):
+    article = get_object_or_404(Article, pk=article_pk)
+    comments = Comment.objects.filter(article=article)
+
     if request.method == 'GET':
-        article = get_object_or_404(Article, pk=article_pk)
-        comments = Comment.objects.filter(article=article)
+        
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data)
+    
+    elif request.method == 'DELETE':
+        
+        comments.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
     
     elif request.method == 'POST':
         serializer = CommentSerializer(data=request.data)
@@ -52,6 +59,7 @@ def article_list(request):
         serializer = ArticleListSerializer(articles, many=True)
         return Response(serializer.data)
 
+    
     elif request.method == 'POST':
         # authentication_classes = [BasicAuthentication, SessionAuthentication]
         # # permission 추가

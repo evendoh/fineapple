@@ -174,24 +174,30 @@ def saving_products_options(request, fin_prdt_cd):
 
 
 
-# @api_view(['GET'])
-# def top_rate(request):
-#     # 가입 기간에 상관없이 금리가 가장 높은 상품 찾기
-#     top_products = DepositOptions.objects.aggregate(intr_rate2=Max('intr_rate2'))
-#     options = DepositOptions.objects.get(intr_rate2 = top_products['intr_rate2'])
-#     print(options)
-#     # 해당 오션의 상품 찾기
-#     product_ids = top_products.values_list('product_id', flat=True)
-#     products = DepositProducts.objects.filter(id__in=product_ids)
+@api_view(['GET'])
+def detail_deposit_products(request, fin_prdt_cd):
+    deposit_product = get_object_or_404(DepositProducts, fin_prdt_cd=fin_prdt_cd)
+    serializer1 = DepositProductsSerializer(deposit_product)
+    
+    product = DepositOptions.objects.filter(fin_prdt_cd=fin_prdt_cd)
+    serializer2 = DepositOptionsSerializer(product, many= True)
+    
+    response_data = {
+        'deposit_product' : serializer1.data,
+        'deposit_product_options' : serializer2.data,
+    }
+    return Response(response_data)
 
-#     # 상품 및 옵션 데이터를 직렬화
-#     product_serializer = DepositProductsSerializer(products)
-#     options_serializer = DepositOptionsSerializer(options)
+@api_view(['GET'])
+def detail_saving_products(request, fin_prdt_cd):
+    saving_product = get_object_or_404(SavingProducts, fin_prdt_cd=fin_prdt_cd)
+    serializer1 = SavingProductsSerializer(saving_product)
     
-#     # 응답 데이터 구성
-#     response_data = {
-#         'top_product': product_serializer.data,
-#         'options': options_serializer.data
-#     }
+    product = SavingOptions.objects.filter(fin_prdt_cd=fin_prdt_cd)
+    serializer2 = SavingOptionsSerializer(product, many= True)
     
-#     return Response(response_data)
+    response_data = {
+        'saving_product' : serializer1.data,
+        'saving_product_options' : serializer2.data,
+    }
+    return Response(response_data)
