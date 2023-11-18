@@ -3,6 +3,29 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from .models import User
 from .serializers import UserProfileSerializer
+from django.shortcuts import get_object_or_404
+from rest_framework import status
+
+### USER 정보 수정 하는 함수 만들기
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+
+def user_profile_edit(request):
+    user_profile = get_object_or_404(User, user=request.user)
+    serializer = UserProfileSerializer(user_profile, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
+
+
 
 
 # # profile 조회
@@ -38,3 +61,4 @@ from .serializers import UserProfileSerializer
 # #                 you.followers.add(me)
 # #         return redirect("accounts:profile", you.pk)
 # #     return redirect("accounts:login")
+

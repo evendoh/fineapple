@@ -25,7 +25,7 @@ def convert_currency(request):
     data = response.json()
     serializer = CurrencyConversionListSerializer(data, many=True)
     
-    return Response(serializer.data)
+    return Response(data)
 
 
 
