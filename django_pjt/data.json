@@ -1,0 +1,28 @@
+[
+{
+    "model": "accounts.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$oLjn5iQkh1CtHrykowZFgJ$9bnc6USr7eIgj8uYtqNgtTmLCUvuuEn5GCvgnZYxWvs=",
+        "last_login": "2023-11-23T04:08:03.297Z",
+        "is_superuser": false,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-11-22T07:47:11.932Z",
+        "name": "장재성",
+        "age": 30,
+        "money": 30,
+        "saving_possible_money": 30,
+        "saving_possible_period": 30,
+        "financial_type": "적금",
+        "mbti": "AESD",
+        "financial_products": "10527001000925000,00266451,01030500600002,WR0001B",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]
