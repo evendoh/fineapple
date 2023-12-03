@@ -1,5 +1,5 @@
 🍎🍏🍎🍏🍎🍏🍎🍏🍎🍏🍎🍏🍎🍏
 # fineapple 🍎
-fine financial application 2
+fine financial application
 
 🍎🍏🍎🍏🍎🍏🍎🍏🍎🍏🍎🍏🍎🍏
